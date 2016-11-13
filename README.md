@@ -84,6 +84,8 @@ Translates the pen data and returns a string representing a __.svg__ file.
 * options.yTranslate - defaults to 0
 * options.maxValve - defaults to 1000
 
+Example:
+
 	var svg = penSVG.getSVG({});
     console.log("SVG: \n", svg);
 
@@ -121,6 +123,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.1 
+
+* fixed type-o in documentation
 
 #### Version 0.1.0 
 
