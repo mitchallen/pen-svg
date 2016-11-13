@@ -126,6 +126,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.1.1 
 
+* upgraded __@mitchallen/pen__ to 0.1.2 to get bug fix where __goto__ was returning null if x or y was zero
+
+#### Version 0.1.1 
+
 * fixed type-o in documentation
 
 #### Version 0.1.0 
