@@ -156,7 +156,7 @@ describe('module factory smoke test', () => {
         obj.addPen(pen1);
         obj.addPen(pen2);
 
-        var svg = obj.writeSVG({ filename: "write-test.svg" });
+        var svg = obj.writeSVG({ filename: "test/output/write-test.svg" });
         console.log("SVG: \n", svg);
         done();
     });
