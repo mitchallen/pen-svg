@@ -93,7 +93,7 @@ module.exports.create = (spec) => {
 
             demand.notNull(options,"writeSVG method requires parameters");
             demand.notNull(options.filename,"writeSVG method requires spec.filename parameter");
-            demand.notNull(options.width,"writeSVG method requires spec.width parameter");
+            // demand.notNull(options.width,"writeSVG method requires spec.width parameter");
 
             var filename = options.filename,
                 title = spec.title || "pen-svg file",
