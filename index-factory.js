@@ -89,7 +89,7 @@ module.exports.create = (spec) => {
             return fd;
         },
 
-        writeSVG: options => {
+        writeSVG: function(options) {
 
             demand.notNull(options,"writeSVG method requires parameters");
             demand.notNull(options.filename,"writeSVG method requires spec.filename parameter");

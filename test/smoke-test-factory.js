@@ -124,4 +124,40 @@ describe('module factory smoke test', () => {
         console.log("SVG: \n", svg);
         done();
     });
+
+    it('writeSVG should write svg for a multiple pens', done => {
+        var obj = _factory.create({});
+        should.exist(obj);
+
+        var pen1 = penFactory.create({ 
+            color: 0xFF0000,    // red pen
+            width: 2,           // pen width 
+            alpha: 0.8          // pen alpha value
+        });
+
+        var pen2 = penFactory.create({ 
+            color: 0x0000FF,    // blue pen
+            width: 4,           // pen width 
+            alpha: 0.8          // pen alpha value
+        });
+
+        pen1.up();
+        pen1.goto( { x: 10, y: 15 } );   // MoveTo 50, 50
+        pen1.down();
+        pen1.goto( { x: 20, y: 25 } );   // LineTo 10, 20
+        pen1.goto( { x: 30, y: 35 } );   // LineTo 15, 30
+        
+        pen2.up();
+        pen2.goto( { x: 40, y: 45 } );   // LineTo 45, 60
+        pen2.down();
+        pen2.goto( { x: 50, y: 55 } );   // MoveTo 30, 40
+        pen2.goto( { x: 60, y: 65 } );   // LineTo 10, 20
+
+        obj.addPen(pen1);
+        obj.addPen(pen2);
+
+        var svg = obj.writeSVG({ filename: "write-test.svg" });
+        console.log("SVG: \n", svg);
+        done();
+    });
 });
