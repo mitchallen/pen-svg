@@ -124,6 +124,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.1.4
+
+* upgraded __@mitchallen/pen__ to 0.1.3 to get bug fix for min / max issues
+
 #### Version 0.1.3
 
 * writeSVG now passes all options directly to getSVG
