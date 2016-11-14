@@ -59,6 +59,12 @@ module.exports.create = (spec) => {
             _pen.forEach( item => {
                 // fd += util.format('    <path fill="none" stroke="#F00" stroke-width="0.25px" d="%s" />\n', path );
 
+                // Don't bother writing empty paths
+                if(item.path().length === 0) {
+                    // This is in a function, not a loop
+                    return;
+                }
+
                 var sPath = "";
 
                 let penPath = fuse.removeDupes( { 
@@ -90,24 +96,12 @@ module.exports.create = (spec) => {
         },
 
         writeSVG: function(options) {
-
             demand.notNull(options,"writeSVG method requires parameters");
             demand.notNull(options.filename,"writeSVG method requires spec.filename parameter");
             // demand.notNull(options.width,"writeSVG method requires spec.width parameter");
-
-            var filename = options.filename,
-                title = spec.title || "pen-svg file",
-                desc = spec.desc || "(c) 2016 Mitch Allen",
-                groupId = spec.groupId;
-
-            var getOps = {
-                title: title,
-                desc: desc,
-                groupId: groupId,
-            };
-
+            var filename = options.filename;
             var stream = fs.createWriteStream(filename);
-            var fData = this.getSVG(getOps);
+            var fData = this.getSVG(options);
             stream.write(fData);
             // stream.close();  // would randomly gen bad descriptor message
             stream.end();

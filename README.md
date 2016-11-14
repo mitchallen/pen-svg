@@ -124,7 +124,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
-#### Version 0.1.1 
+#### Version 0.1.3
+
+* writeSVG now passes all options directly to getSVG
+* writeSVG skips pens with a path length of zero
+
+#### Version 0.1.2 
 
 * upgraded __@mitchallen/pen__ to 0.1.2 to get bug fix where __goto__ was returning null if x or y was zero
 
