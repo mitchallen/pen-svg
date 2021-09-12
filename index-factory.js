@@ -33,16 +33,17 @@ module.exports.create = (spec) => {
                 return null;
             }
 
-            var svgWidth  = options.width   || "100";
-            var svgHeight = options.height  || "100";
-            var title     = options.title   || "pen-svg file";
-            var desc      = options.desc    || "code generated svg file";
-            var groupId   = options.groupId || "g1";
-            var xScale    = options.xScale  || 1;
-            var yScale    = options.yScale  || 1;
-            var xTranslate = options.xTranslate  || 0;
-            var yTranslate = options.yTranslate  || 0;
-            var maxValve = options.maxValve  || 1000;
+            let fill = options.fill || "none";
+            let svgWidth  = options.width   || "100";
+            let svgHeight = options.height  || "100";
+            let title     = options.title   || "pen-svg file";
+            let desc      = options.desc    || "code generated svg file";
+            let groupId   = options.groupId || "g1";
+            let xScale    = options.xScale  || 1;
+            let yScale    = options.yScale  || 1;
+            let xTranslate = options.xTranslate  || 0;
+            let yTranslate = options.yTranslate  || 0;
+            let maxValve = options.maxValve  || 1000;
 
             // Generate file content
 
@@ -82,7 +83,8 @@ module.exports.create = (spec) => {
 
                 // TODO: stroke-linecap, stroke-linejoin
 
-                var hexColor = zfill( item.color().toString(16), 6);
+
+                let hexColor = zfill( item.color().toString(16), 6);
 
                 fd += util.format(
                     '    <path fill="none" stroke="#%s" stroke-width="%d" d="%s" />\n', hexColor, item.width(), sPath );
