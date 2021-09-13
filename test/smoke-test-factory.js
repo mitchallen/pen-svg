@@ -9,7 +9,7 @@
 let Chance = require('chance');
 let chance = new Chance();
 
-var request = require('supertest'),
+let request = require('supertest'),
     should = require('should'),
     penFactory = require("@mitchallen/pen"),
     modulePath = "../index-factory";
@@ -46,29 +46,29 @@ describe('module factory smoke test', () => {
     })
 
     it('create method with no spec should return null', done => {
-        var obj = _factory.create();
+        let obj = _factory.create();
         should.not.exist(obj);
         done();
     });
 
     it('create method with spec should return object', done => {
-        var obj = _factory.create({});
+        let obj = _factory.create({});
         should.exist(obj);
         done();
     });
 
     it('health method should return ok', done => {
-        var obj = _factory.create({});
+        let obj = _factory.create({});
         should.exist(obj);
         obj.health().should.eql("OK");
         done();
     });
 
     it('getSVG should return svg for a pen', done => {
-        var obj = _factory.create({});
+        let obj = _factory.create({});
         should.exist(obj);
 
-        var pen = penFactory.create({ 
+        let pen = penFactory.create({ 
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
@@ -87,22 +87,22 @@ describe('module factory smoke test', () => {
 
         obj.addPen(pen);
 
-        var svg = obj.getSVG({});
-        console.log("SVG: \n", svg);
+        let svg = obj.getSVG({});
+        // console.log("SVG: \n", svg);
         done();
     });
 
     it('getSVG should return svg for a multiple pens', done => {
-        var obj = _factory.create({});
+        let obj = _factory.create({});
         should.exist(obj);
 
-        var pen1 = penFactory.create({ 
+        let pen1 = penFactory.create({ 
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        var pen2 = penFactory.create({ 
+        let pen2 = penFactory.create({ 
             color: 0x0000FF,    // blue pen
             width: 4,           // pen width 
             alpha: 0.8          // pen alpha value
@@ -123,22 +123,22 @@ describe('module factory smoke test', () => {
         obj.addPen(pen1);
         obj.addPen(pen2);
 
-        var svg = obj.getSVG({});
-        console.log("SVG: \n", svg);
+        let svg = obj.getSVG({});
+        // console.log("SVG: \n", svg);
         done();
     });
 
     it('writeSVG should write svg for a multiple pens', done => {
-        var obj = _factory.create({});
+        let obj = _factory.create({});
         should.exist(obj);
 
-        var pen1 = penFactory.create({ 
+        let pen1 = penFactory.create({ 
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        var pen2 = penFactory.create({ 
+        let pen2 = penFactory.create({ 
             color: 0x0000FF,    // blue pen
             width: 4,           // pen width 
             alpha: 0.8          // pen alpha value
@@ -159,8 +159,8 @@ describe('module factory smoke test', () => {
         obj.addPen(pen1);
         obj.addPen(pen2);
 
-        var svg = obj.writeSVG({ filename: "test/output/write-test.svg" });
-        console.log("SVG: \n", svg);
+        let svg = obj.writeSVG({ filename: "test/output/write-test.svg" });
+        // console.log("SVG: \n", svg);
         done();
     });
 
@@ -171,8 +171,8 @@ describe('module factory smoke test', () => {
         should.exist(obj);
 
         let pen0 = penFactory.create({ 
-            color: 0x00FF00,    // red green
-            fill: 0x000000,
+            color: 0xFFFFFF,    
+            fill: 0xFFFFFF,
             width: 2,           // pen width 
             alpha: 1.0,          // pen alpha value
         });
@@ -183,7 +183,7 @@ describe('module factory smoke test', () => {
             alpha: 0.8          // pen alpha value
         });
 
-        var pen2 = penFactory.create({ 
+        let pen2 = penFactory.create({ 
             color: 0x0000FF,    // blue pen
             width: 4,           // pen width 
             alpha: 0.8          // pen alpha value
@@ -245,8 +245,12 @@ describe('module factory smoke test', () => {
         obj.addPen(pen1);
         obj.addPen(pen2);
 
-        var svg = obj.writeSVG({ filename: "test/output/random-test.svg" });
-        console.log("SVG: \n", svg);
+        let svg = obj.writeSVG({ 
+            width: 2048,
+            height: 2048,
+            filename: "test/output/random-test.svg" 
+        });
+        // console.log("SVG: \n", svg);
         done();
     });
 

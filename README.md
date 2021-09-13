@@ -4,6 +4,18 @@
 pen to svg file
 --
 
+<p align="left">
+  
+  <a href="https://npmjs.org/package/@mitchallen/pen-svg">
+    <img src="http://img.shields.io/npm/v/@mitchallen/pen-svg.svg?style=flat-square" alt="Version">
+  </a>
+  
+  <a href="https://npmjs.org/package/@mitchallen/pen-svg">
+    <img src="https://img.shields.io/github/license/mitchallen/pen-svg.svg" alt="License">
+  </a>
+  
+</p>
+
 ## Installation
 
 You must use __npm__ __2.7.0__ or higher because of the scoped package name.
@@ -124,9 +136,9 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
-#### Version 0.2.0
+#### Version 0.1.5
 
-* upgraded __@mitchallen/pen__ to 0.2.0
+* upgraded __@mitchallen/pen__ to 0.2.3 to support pen fill property
 
 #### Version 0.1.4
 

@@ -19,13 +19,13 @@ module.exports.create = (spec) => {
     }
     // private 
     let _package = "@mitchallen/pen-svg";
-    var _pen = [];
+    let _pens = [];
     return {
         // public 
         package: () => _package,
         health: () => "OK",
 
-        addPen: p => _pen.push(p),
+        addPen: p => _pens.push(p),
 
         getSVG: function(options) {
 
@@ -33,7 +33,6 @@ module.exports.create = (spec) => {
                 return null;
             }
 
-            let fill = options.fill || "none";
             let svgWidth  = options.width   || "100";
             let svgHeight = options.height  || "100";
             let title     = options.title   || "pen-svg file";
@@ -57,11 +56,11 @@ module.exports.create = (spec) => {
 
             function zfill(strNum, len) {return (Array(len).join("0") + strNum).slice(-len);}
 
-            _pen.forEach( item => {
+            _pens.forEach( pen => {
                 // fd += util.format('    <path fill="none" stroke="#F00" stroke-width="0.25px" d="%s" />\n', path );
 
                 // Don't bother writing empty paths
-                if(item.path().length === 0) {
+                if(pen.path().length === 0) {
                     // This is in a function, not a loop
                     return;
                 }
@@ -69,7 +68,7 @@ module.exports.create = (spec) => {
                 var sPath = "";
 
                 let penPath = fuse.removeDupes( { 
-                    path: item.path(),
+                    path: pen.path(),
                     maxValve: maxValve 
                 });
 
@@ -83,11 +82,14 @@ module.exports.create = (spec) => {
 
                 // TODO: stroke-linecap, stroke-linejoin
 
-
-                let hexColor = zfill( item.color().toString(16), 6);
+                let hexColor = '#' + zfill( pen.color().toString(16), 6);
+                let fillColor = 'none';
+                if( pen.fill() ) {
+                    fillColor = '#' + zfill( pen.fill().toString(16), 6);
+                }
 
                 fd += util.format(
-                    '    <path fill="none" stroke="#%s" stroke-width="%d" d="%s" />\n', hexColor, item.width(), sPath );
+                    '    <path fill="%s" stroke="%s" stroke-width="%d" d="%s" />\n', fillColor, hexColor, pen.width(), sPath );
 
             });
      
