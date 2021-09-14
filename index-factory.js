@@ -84,7 +84,7 @@ module.exports.create = (spec) => {
 
                 let hexColor = '#' + zfill( pen.color().toString(16), 6);
                 let fillColor = 'none';
-                if( pen.fill() ) {
+                if( pen.fill() !== undefined ) {
                     fillColor = '#' + zfill( pen.fill().toString(16), 6);
                 }
 

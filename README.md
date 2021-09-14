@@ -136,6 +136,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.2.2
+
+* upgraded __@mitchallen/pen__ to 0.2.4 to handle fill 0
+
 #### Version 0.2.1
 
 * upgraded __@mitchallen/pen__ to 0.2.3 to support pen fill property
