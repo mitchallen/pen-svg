@@ -11,7 +11,7 @@ pen to svg file
   </a>
   
   <a href="https://npmjs.org/package/@mitchallen/pen-svg">
-    ![image](https://img.shields.io/badge/license-MIT-green)]
+    <img src="https://img.shields.io/github/license/mitchallen/pen-svg.svg" alt="License">
   </a>
   
 </p>
