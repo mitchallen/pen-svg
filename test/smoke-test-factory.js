@@ -18,24 +18,24 @@ describe('module factory smoke test', () => {
 
     var _factory = null;
 
-    before( done => {
+    before(done => {
         // Call before all tests
         delete require.cache[require.resolve(modulePath)];
         _factory = require(modulePath);
         done();
     });
 
-    after( done => {
+    after(done => {
         // Call after all tests
         done();
     });
 
-    beforeEach( done => {
+    beforeEach(done => {
         // Call before each test
         done();
     });
 
-    afterEach( done => {
+    afterEach(done => {
         // Call after eeach test
         done();
     });
@@ -68,22 +68,22 @@ describe('module factory smoke test', () => {
         let obj = _factory.create({});
         should.exist(obj);
 
-        let pen = penFactory.create({ 
+        let pen = penFactory.create({
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        pen.up();
-        pen.goto( { x: 10, y: 15 } );   // MoveTo 50, 50
-        pen.down();
-        pen.goto( { x: 20, y: 25 } );   // LineTo 10, 20
-        pen.goto( { x: 30, y: 35 } );   // LineTo 15, 30
-        pen.goto( { x: 40, y: 45 } );   // LineTo 45, 60
-        pen.up();
-        pen.goto( { x: 50, y: 55 } );   // MoveTo 30, 40
-        pen.down();
-        pen.goto( { x: 60, y: 65 } );   // LineTo 10, 20
+        pen.up()
+            .goto({ x: 10, y: 15 })   // MoveTo 
+            .down()
+            .goto({ x: 20, y: 25 })   // LineTo 
+            .goto({ x: 30, y: 35 })   // LineTo 
+            .goto({ x: 40, y: 45 })   // LineTo 
+            .up()
+            .goto({ x: 50, y: 55 })   // MoveTo 
+            .down()
+            .goto({ x: 60, y: 65 });   // LineTo 
 
         obj.addPen(pen);
 
@@ -96,29 +96,29 @@ describe('module factory smoke test', () => {
         let obj = _factory.create({});
         should.exist(obj);
 
-        let pen1 = penFactory.create({ 
+        let pen1 = penFactory.create({
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        let pen2 = penFactory.create({ 
+        let pen2 = penFactory.create({
             color: 0x0000FF,    // blue pen
             width: 4,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        pen1.up();
-        pen1.goto( { x: 10, y: 15 } );   // MoveTo 50, 50
-        pen1.down();
-        pen1.goto( { x: 20, y: 25 } );   // LineTo 10, 20
-        pen1.goto( { x: 30, y: 35 } );   // LineTo 15, 30
-        
-        pen2.up();
-        pen2.goto( { x: 40, y: 45 } );   // LineTo 45, 60
-        pen2.down();
-        pen2.goto( { x: 50, y: 55 } );   // MoveTo 30, 40
-        pen2.goto( { x: 60, y: 65 } );   // LineTo 10, 20
+        pen1.up()
+            .goto({ x: 10, y: 15 })   // MoveTo 
+            .down()
+            .goto({ x: 20, y: 25 })  // LineTo 
+            .goto({ x: 30, y: 35 });  // LineTo 
+
+        pen2.up()
+            .goto({ x: 40, y: 45 })   // LineTo 
+            .down()
+            .goto({ x: 50, y: 55 })   // MoveTo 
+            .goto({ x: 60, y: 65 });   // LineTo 
 
         obj.addPen(pen1);
         obj.addPen(pen2);
@@ -132,29 +132,29 @@ describe('module factory smoke test', () => {
         let obj = _factory.create({});
         should.exist(obj);
 
-        let pen1 = penFactory.create({ 
+        let pen1 = penFactory.create({
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        let pen2 = penFactory.create({ 
+        let pen2 = penFactory.create({
             color: 0x0000FF,    // blue pen
             width: 4,           // pen width 
             alpha: 0.8          // pen alpha value
         });
 
-        pen1.up();
-        pen1.goto( { x: 10, y: 15 } );   // MoveTo 50, 50
-        pen1.down();
-        pen1.goto( { x: 20, y: 25 } );   // LineTo 10, 20
-        pen1.goto( { x: 30, y: 35 } );   // LineTo 15, 30
-        
-        pen2.up();
-        pen2.goto( { x: 40, y: 45 } );   // LineTo 45, 60
-        pen2.down();
-        pen2.goto( { x: 50, y: 55 } );   // MoveTo 30, 40
-        pen2.goto( { x: 60, y: 65 } );   // LineTo 10, 20
+        pen1.up()
+            .goto({ x: 10, y: 15 })   // MoveTo 
+            .down()
+            .goto({ x: 20, y: 25 })   // LineTo 
+            .goto({ x: 30, y: 35 });   // LineTo 
+
+        pen2.up()
+            .goto({ x: 40, y: 45 })   // LineTo 
+            .down()
+            .goto({ x: 50, y: 55 })   // MoveTo 
+            .goto({ x: 60, y: 65 });   // LineTo 
 
         obj.addPen(pen1);
         obj.addPen(pen2);
@@ -170,7 +170,7 @@ describe('module factory smoke test', () => {
         let obj = _factory.create({});
         should.exist(obj);
 
-        let pen = penFactory.create({ 
+        let pen = penFactory.create({
             color: 0xFF0000,    // red pen
             width: 2,           // pen width 
             alpha: 0.8          // pen alpha value
@@ -179,35 +179,35 @@ describe('module factory smoke test', () => {
         let xSize = 1024;
         let ySize = 1024;
         let padding = 50;
-        let cursor = { x: xSize / 2 , y: ySize / 2 };
+        let cursor = { x: xSize / 2, y: ySize / 2 };
         let distance = 100;
         let limit = 200;
 
         pen.up();
-        pen.goto( cursor );  
+        pen.goto(cursor);
         pen.down();
 
-        for( let i = 0; i < limit; i++ ) {
+        for (let i = 0; i < limit; i++) {
             let c1 = cursor;
-            c1.x += chance.integer( { min: -distance, max: distance });
-            c1.y += chance.integer( { min: -distance, max: distance });
-            if( 
-                c1.x > padding 
-                && c1.x < (xSize - padding) 
-                && c1.y > padding 
+            c1.x += chance.integer({ min: -distance, max: distance });
+            c1.y += chance.integer({ min: -distance, max: distance });
+            if (
+                c1.x > padding
+                && c1.x < (xSize - padding)
+                && c1.y > padding
                 && c1.y < (ySize - padding)
             ) {
                 cursor = c1;
-                pen.goto( cursor );
+                pen.goto(cursor);
             }
         }
 
         obj.addPen(pen);
 
-        let svg = obj.writeSVG({ 
+        let svg = obj.writeSVG({
             width: 1024,
             height: 1024,
-            filename: "test/output/random-test.svg" 
+            filename: "test/output/random-test.svg"
         });
         // console.log("SVG: \n", svg);
         done();

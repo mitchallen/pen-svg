@@ -11,7 +11,7 @@ pen to svg file
   </a>
   
   <a href="https://npmjs.org/package/@mitchallen/pen-svg">
-    <img src="https://img.shields.io/github/license/mitchallen/pen-svg.svg" alt="License">
+    [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
   </a>
   
 </p>
@@ -27,6 +27,7 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 
 ## Usage
 
+```js
 	var penFactory = require("@mitchallen/pen"),
 		psFactory = require("@mitchallen/pen-svg"),
 		penSVG = psFactory.create({});
@@ -44,22 +45,23 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
     });
 
     pen1.up();
-    pen1.goto( { x: 10, y: 15 } );   // MoveTo 50, 50
-    pen1.down();
-    pen1.goto( { x: 20, y: 25 } );   // LineTo 10, 20
-    pen1.goto( { x: 30, y: 35 } );   // LineTo 15, 30
+        .goto( { x: 10, y: 15 } )   // MoveTo x, y
+        .down()
+        .goto( { x: 20, y: 25 } )   // LineTo x, y
+        .goto( { x: 30, y: 35 } );   // LineTo x, y
         
-    pen2.up();
-    pen2.goto( { x: 40, y: 45 } );   // LineTo 45, 60
-    pen2.down();
-    pen2.goto( { x: 50, y: 55 } );   // MoveTo 30, 40
-    pen2.goto( { x: 60, y: 65 } );   // LineTo 10, 20
+    pen2.up()
+        .goto( { x: 40, y: 45 } )   // LineTo x, y
+        .down()
+        .goto( { x: 50, y: 55 } )   // MoveTo x, y
+        .goto( { x: 60, y: 65 } );   // LineTo  x, y
 
     penSVG.addPen(pen1);
     penSVG.addPen(pen2);
 
     var svg = penSVG.writeSVG({ filename: "test/output/write-test.svg" });
     console.log("SVG: \n", svg);
+```
 
 * * * 
 
@@ -135,6 +137,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.3
+
+* upgraded __@mitchallen/pen__ to 0.2.5 to allow chaining of pen methods 
 
 #### Version 0.2.2
 
