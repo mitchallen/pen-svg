@@ -25,8 +25,11 @@ module.exports.create = (spec) => {
         package: () => _package,
         health: () => "OK",
 
-        addPen: p => _pens.push(p),
-
+        addPen: function(p) { 
+            _pens.push(p); 
+            return this; 
+        },
+        
         getSVG: function(options) {
 
             if(!options) {

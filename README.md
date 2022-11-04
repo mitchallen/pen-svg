@@ -56,8 +56,8 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
         .goto( { x: 50, y: 55 } )   // MoveTo x, y
         .goto( { x: 60, y: 65 } );   // LineTo  x, y
 
-    penSVG.addPen(pen1);
-    penSVG.addPen(pen2);
+    penSVG.addPen(pen1)
+          .addPen(pen2);
 
     var svg = penSVG.writeSVG({ filename: "test/output/write-test.svg" });
     console.log("SVG: \n", svg);
@@ -137,6 +137,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.4
+
+* the addPen method is now chainable
+* upgraded __@mitchallen/pen__ to 0.2.6 
 
 #### Version 0.2.3
 

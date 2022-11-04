@@ -120,8 +120,8 @@ describe('module factory smoke test', () => {
             .goto({ x: 50, y: 55 })   // MoveTo 
             .goto({ x: 60, y: 65 });   // LineTo 
 
-        obj.addPen(pen1);
-        obj.addPen(pen2);
+        obj.addPen(pen1)
+           .addPen(pen2);
 
         let svg = obj.getSVG({});
         // console.log("SVG: \n", svg);
@@ -156,8 +156,8 @@ describe('module factory smoke test', () => {
             .goto({ x: 50, y: 55 })   // MoveTo 
             .goto({ x: 60, y: 65 });   // LineTo 
 
-        obj.addPen(pen1);
-        obj.addPen(pen2);
+        obj.addPen(pen1)
+           .addPen(pen2);
 
         let svg = obj.writeSVG({ filename: "test/output/write-test.svg" });
         // console.log("SVG: \n", svg);
@@ -183,9 +183,9 @@ describe('module factory smoke test', () => {
         let distance = 100;
         let limit = 200;
 
-        pen.up();
-        pen.goto(cursor);
-        pen.down();
+        pen.up()
+           .goto(cursor)
+           .down();
 
         for (let i = 0; i < limit; i++) {
             let c1 = cursor;
