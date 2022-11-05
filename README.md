@@ -28,39 +28,41 @@ You must use __npm__ __2.7.0__ or higher because of the scoped package name.
 ## Usage
 
 ```js
-	var penFactory = require("@mitchallen/pen"),
-		psFactory = require("@mitchallen/pen-svg"),
-		penSVG = psFactory.create({});
-  
-    var pen1 = penFactory.create({ 
-        color: 0xFF0000,    // red pen
-        width: 2,           // pen width 
-        alpha: 0.8          // pen alpha value
-    });
+var penFactory = require("@mitchallen/pen"),
+    psFactory = require("@mitchallen/pen-svg"),
+    penSVG = psFactory.create({});
 
-    var pen2 = penFactory.create({ 
-        color: 0x0000FF,    // blue pen
-        width: 4,           // pen width 
-        alpha: 0.8          // pen alpha value
-    });
+var pen1 = penFactory.create({
+    color: 0xFF0000,    // red pen
+    width: 2,           // pen width 
+    alpha: 0.8          // pen alpha value
+});
 
-    pen1.up();
-        .goto( { x: 10, y: 15 } )   // MoveTo x, y
-        .down()
-        .goto( { x: 20, y: 25 } )   // LineTo x, y
-        .goto( { x: 30, y: 35 } );   // LineTo x, y
-        
-    pen2.up()
-        .goto( { x: 40, y: 45 } )   // LineTo x, y
-        .down()
-        .goto( { x: 50, y: 55 } )   // MoveTo x, y
-        .goto( { x: 60, y: 65 } );   // LineTo  x, y
+var pen2 = penFactory.create({
+    color: 0x0000FF,    // blue pen
+    width: 4,           // pen width 
+    alpha: 0.8          // pen alpha value
+});
 
-    penSVG.addPen(pen1)
-          .addPen(pen2);
+pen1.up();
+.goto({ x: 10, y: 15 })   // MoveTo x, y
+    .down()
+    .goto({ x: 20, y: 25 })   // LineTo x, y
+    .goto({ x: 30, y: 35 });   // LineTo x, y
 
-    var svg = penSVG.writeSVG({ filename: "test/output/write-test.svg" });
-    console.log("SVG: \n", svg);
+pen2.up()
+    .goto({ x: 40, y: 45 })   // MoveTo x, y
+    .down()
+    .goto({ x: 50, y: 55 })   // LineTo x, y
+    .goto({ x: 60, y: 65 });   // LineTo  x, y
+
+penSVG.addPen(pen1)
+    .addPen(pen2);
+
+var svg = penSVG.writeSVG({ 
+    filename: "test/output/write-test.svg" 
+});
+console.log("SVG: \n", svg);
 ```
 
 * * * 
@@ -137,6 +139,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.5
+
+* cleaned up readme example
 
 #### Version 0.2.4
 
