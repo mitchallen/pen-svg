@@ -1,6 +1,6 @@
 {
   "name": "@mitchallen/pen-svg",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "pen to svg file",
   "main": "index-factory.js",
   "scripts": {
