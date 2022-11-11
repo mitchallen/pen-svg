@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">
+  <title>pen-svg file</title>
+  <desc>code generated svg file</desc>
+  <g id="g1" transform="scale(1,1) translate(0,0)">
+    <path transform="translate(512 512)" fill="#00ffff" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="rotate(30) translate(512 512)" fill="#00ff00" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="rotate(60 512 512) translate(512 512)" fill="#ff00ff" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="rotate(60 768 256) translate(512 512)" fill="#ffff00" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="translate(512 512) rotate(30)" fill="#00ff00" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="translate(341.3333333333333 341.3333333333333) scale(2 2)" fill="#ff0000" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="scale(2 2) translate(341.3333333333333 341.3333333333333) rotate(180)" fill="#0000ff" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="translate(204.8 170.66666666666666)" fill="#cccccc" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="translate(409.6 170.66666666666666) skewX(30)" fill="#cccccc" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="translate(614.4 170.66666666666666) skewY(30)" fill="#cccccc" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+    <path transform="translate(819.2 170.66666666666666) skewX(30) skewY(30)" fill="#cccccc" stroke="#000000" stroke-width="2" d="M0 0 -50 -50 50 -50 0 50 0 0" />
+  </g>
+</svg>

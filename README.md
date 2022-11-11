@@ -157,6 +157,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Version History
 
+#### Version 0.2.7
+
+* added transform for rotate, skewX, skewY
+* transform order now respected
+
 #### Version 0.2.6
 
 * addPen now allows overriding color, fill, width, transform translate and scale
