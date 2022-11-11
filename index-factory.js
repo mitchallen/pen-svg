@@ -113,12 +113,12 @@ module.exports.create = (spec) => {
 
                 if( translate ) {
                     let { x = 1, y = 1 } = translate;
-                    tf += `translate(${x},${y})`
+                    tf += `translate(${x},${y})`;
                 }
 
                 if( scale ) {
                     let { x = 1, y = 1 } = scale;
-                    tf += (tf.length > 0 ? " " : "") + `scale(${x},${y})`
+                    tf += (tf.length > 0 ? " " : "") + `scale(${x},${y})`;
                 }
 
                 let tString = "";
