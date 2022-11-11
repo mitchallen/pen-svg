@@ -57,7 +57,24 @@ pen2.up()
     .goto({ x: 60, y: 65 });   // LineTo  x, y
 
 penSVG.addPen(pen1)
-    .addPen(pen2);
+    .addPen(
+        pen2,
+        {
+            color: 0xFF0000,
+            fill: 0x00FF00,
+            width: 5,
+            transform: {
+                translate: {
+                    x: 100,
+                    y: 100
+                },
+                scale: {
+                    x: 0.5,
+                    y: 0.5
+                },
+            }
+        }
+    );
 
 var svg = penSVG.writeSVG({ 
     filename: "test/output/write-test.svg" 
@@ -139,6 +156,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.2.6
+
+* addPen now allows overriding color, fill, width, transform translate and scale
 
 #### Version 0.2.5
 

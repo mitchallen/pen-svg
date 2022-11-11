@@ -205,30 +205,33 @@ describe('module factory smoke test', () => {
         obj
             .addPen(pen)
             .addPen(
-                pen, {
-                color: 0x000000,
-                width: 5,
-                transform: {
-                    translate: {
-                        x: 50,
-                        y: 50
+                pen,
+                {
+                    color: 0x000000,
+                    width: 5,
+                    transform: {
+                        translate: {
+                            x: 50,
+                            y: 50
+                        }
                     }
-                }
-            })
-            .addPen(pen, {
-                color: 0x0000FF,
-                fill: 0x00FF00,
-                transform: {
-                    translate: {
-                        x: 100,
-                        y: 100
-                    },
-                    scale: {
-                        x: 0.5,
-                        y: 0.5
-                    },
-                }
-            })
+                })
+            .addPen(
+                pen,
+                {
+                    color: 0x0000FF,
+                    fill: 0x00FF00,
+                    transform: {
+                        translate: {
+                            x: 100,
+                            y: 100
+                        },
+                        scale: {
+                            x: 0.5,
+                            y: 0.5
+                        },
+                    }
+                })
 
         let svg = obj.writeSVG({
             width: 1024,
