@@ -25,12 +25,12 @@ module.exports.create = (spec) => {
         package: () => _package,
         health: () => "OK",
 
-        addPen: function(p) { 
-            _pens.push(p); 
+        addPen: function(pen, settings = {}) { 
+            _pens.push({pen, settings }); 
             return this; 
         },
         
-        getSVG: function(options) {
+        getSVG: function(options = {}) {
 
             if(!options) {
                 return null;
@@ -59,7 +59,20 @@ module.exports.create = (spec) => {
 
             function zfill(strNum, len) {return (Array(len).join("0") + strNum).slice(-len);}
 
-            _pens.forEach( pen => {
+            _pens.forEach( el => {
+
+                let {
+                    pen,
+                    settings = {},
+                } = el;
+
+                let {
+                    color = pen.color(),
+                    fill = pen.fill(),
+                    width = pen.width(),
+                    transform = {},
+                } = settings;
+
                 // fd += util.format('    <path fill="none" stroke="#F00" stroke-width="0.25px" d="%s" />\n', path );
 
                 // Don't bother writing empty paths
@@ -85,14 +98,41 @@ module.exports.create = (spec) => {
 
                 // TODO: stroke-linecap, stroke-linejoin
 
-                let hexColor = '#' + zfill( pen.color().toString(16), 6);
+                let hexColor = '#' + zfill( color.toString(16), 6);
                 let fillColor = 'none';
-                if( pen.fill() !== undefined ) {
-                    fillColor = '#' + zfill( pen.fill().toString(16), 6);
+                if( fill !== undefined ) {
+                    fillColor = '#' + zfill( fill.toString(16), 6);
+                }
+
+                let {
+                    translate,
+                    scale,
+                } = transform;
+
+                let tf = "";
+
+                if( translate ) {
+                    let { x = 1, y = 1 } = translate;
+                    tf += `translate(${x},${y})`
+                }
+
+                if( scale ) {
+                    let { x = 1, y = 1 } = scale;
+                    tf += (tf.length > 0 ? " " : "") + `scale(${x},${y})`
+                }
+
+                let tString = "";
+                if( tf.length > 0  ) {
+                    tString = `transform="${tf}"`;
                 }
 
                 fd += util.format(
-                    '    <path fill="%s" stroke="%s" stroke-width="%d" d="%s" />\n', fillColor, hexColor, pen.width(), sPath );
+                    '    <path %s fill="%s" stroke="%s" stroke-width="%d" d="%s" />\n', 
+                            tString.length > 0 ? tString : "",
+                            fillColor, 
+                            hexColor, 
+                            width, 
+                            sPath );
 
             });
      

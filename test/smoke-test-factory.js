@@ -121,7 +121,7 @@ describe('module factory smoke test', () => {
             .goto({ x: 60, y: 65 });   // LineTo 
 
         obj.addPen(pen1)
-           .addPen(pen2);
+            .addPen(pen2);
 
         let svg = obj.getSVG({});
         // console.log("SVG: \n", svg);
@@ -157,7 +157,7 @@ describe('module factory smoke test', () => {
             .goto({ x: 60, y: 65 });   // LineTo 
 
         obj.addPen(pen1)
-           .addPen(pen2);
+            .addPen(pen2);
 
         let svg = obj.writeSVG({ filename: "test/output/write-test.svg" });
         // console.log("SVG: \n", svg);
@@ -184,8 +184,8 @@ describe('module factory smoke test', () => {
         let limit = 200;
 
         pen.up()
-           .goto(cursor)
-           .down();
+            .goto(cursor)
+            .down();
 
         for (let i = 0; i < limit; i++) {
             let c1 = cursor;
@@ -202,7 +202,33 @@ describe('module factory smoke test', () => {
             }
         }
 
-        obj.addPen(pen);
+        obj
+            .addPen(pen)
+            .addPen(
+                pen, {
+                color: 0x000000,
+                width: 5,
+                transform: {
+                    translate: {
+                        x: 50,
+                        y: 50
+                    }
+                }
+            })
+            .addPen(pen, {
+                color: 0x0000FF,
+                fill: 0x00FF00,
+                transform: {
+                    translate: {
+                        x: 100,
+                        y: 100
+                    },
+                    scale: {
+                        x: 0.5,
+                        y: 0.5
+                    },
+                }
+            })
 
         let svg = obj.writeSVG({
             width: 1024,
