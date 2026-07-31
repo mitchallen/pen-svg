@@ -21,8 +21,19 @@ pen to svg file
 Requires __Node.js 18__ or higher.
 
 As of __0.3.0__ this package is published to __GitHub Packages__, not the public npm
-registry. Point the `@mitchallen` scope at GitHub in an `.npmrc` next to your
-`package.json`:
+registry. Versions __0.2.7 and earlier__ remain on npmjs.org and are no longer updated
+there.
+
+> __Known limitation.__ npm maps registries per *scope*, not per package. Pointing
+> `@mitchallen` at GitHub Packages therefore redirects *every* `@mitchallen/*` lookup
+> there -- including this package's own dependencies __@mitchallen/demand__ and
+> __@mitchallen/fuse-svg-path__, and the __@mitchallen/pen__ peer dependency, which are
+> currently published only on npmjs.org. Until those are also on GitHub Packages, a
+> scoped install will fail to resolve them.
+
+Requires __Node.js 18__ or higher.
+
+Add an `.npmrc` next to your `package.json`:
 
     @mitchallen:registry=https://npm.pkg.github.com
 
@@ -32,11 +43,9 @@ variable rather than committing it:
 
     //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 
-Then install as usual:
+Then:
 
     $ npm install @mitchallen/pen-svg
-
-> Versions __0.2.7 and earlier__ remain on npmjs.org and are no longer updated there.
 
 This package expects __@mitchallen/pen__ as a peer dependency, since you create the
 pens that you hand to `addPen`. Modern npm installs peer dependencies automatically;
