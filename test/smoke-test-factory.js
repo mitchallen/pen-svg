@@ -9,8 +9,7 @@
 let Chance = require('chance');
 let chance = new Chance();
 
-let request = require('supertest'),
-    should = require('should'),
+let should = require('should'),
     penFactory = require("@mitchallen/pen"),
     modulePath = "../index-factory";
 

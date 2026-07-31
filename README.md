@@ -18,11 +18,18 @@ pen to svg file
 
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
+Requires __Node.js 18__ or higher.
 
     $ npm init
-    $ npm install @mitchallen/pen-svg --save
-  
+    $ npm install @mitchallen/pen-svg
+
+This package expects __[@mitchallen/pen](https://www.npmjs.com/package/@mitchallen/pen)__
+as a peer dependency, since you create the pens that you hand to `addPen`. Modern npm
+installs peer dependencies automatically; if you are managing them yourself, install it
+alongside:
+
+    $ npm install @mitchallen/pen
+
 * * *
 
 ## Usage
@@ -44,8 +51,8 @@ var pen2 = penFactory.create({
     alpha: 0.8          // pen alpha value
 });
 
-pen1.up();
-.goto({ x: 10, y: 15 })   // MoveTo x, y
+pen1.up()
+    .goto({ x: 10, y: 15 })   // MoveTo x, y
     .down()
     .goto({ x: 20, y: 25 })   // LineTo x, y
     .goto({ x: 30, y: 35 });   // LineTo x, y
@@ -90,9 +97,9 @@ console.log("SVG: \n", svg);
 
 Currently *spec* can be an empty option ({}).
 
-	var psFactory = require("@mitchallen/pen-svg"),
+	var psFactory = require("@mitchallen/pen-svg");
 
-	var penSVG = pSactory.create({});
+	var penSVG = psFactory.create({});
 
 ### penSVG.addPen(*pen*)
 
@@ -156,6 +163,16 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.3.0
+
+* dependency modernization -- no changes to generated SVG output
+* removed unused __supertest__ and __@mitchallen/factory-base__ dependencies
+* moved __chance__ to devDependencies; __@mitchallen/pen__ is now a peer dependency
+* upgraded __should__ to 13.x and __chance__ to 1.1.x
+* replaced the __.npmignore__ blocklist with a __files__ allowlist
+* added an __engines__ field (Node.js 18+)
+* resolved all outstanding npm audit advisories
 
 #### Version 0.2.7
 
