@@ -13,6 +13,11 @@ jobs:
   test:
     name: Test (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Needed at install time: @mitchallen/demand, @mitchallen/fuse-svg-path
+      # and the @mitchallen/pen peer all resolve from GitHub Packages.
+      packages: read
     strategy:
       fail-fast: false
       matrix:
@@ -27,14 +32,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mitchallen"
 
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm test
 
   consumer-smoke:
     name: Consumer install (engines floor, Node 18)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     steps:
       - uses: actions/checkout@v7
 
@@ -42,8 +54,12 @@ jobs:
         with:
           node-version: "24"
           cache: npm
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mitchallen"
 
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pack the tarball
         run: npm pack --pack-destination "$RUNNER_TEMP"
@@ -53,9 +69,13 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "18"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mitchallen"
 
       - name: Install and exercise the tarball
         working-directory: ${{ runner.temp }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p consumer && cd consumer
           npm init -y > /dev/null
@@ -76,16 +96,16 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # Deliberately no registry-url/scope here. Scope-to-registry mapping is
-      # per-scope, so pointing @mitchallen at GitHub Packages would break
-      # `npm ci` -- @mitchallen/demand and @mitchallen/fuse-svg-path are only
-      # published on npmjs. Auth for the publish step is configured separately.
       - uses: actions/setup-node@v7
         with:
           node-version: "24"
           cache: npm
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mitchallen"
 
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm test
 
@@ -118,10 +138,6 @@ jobs:
             }
             console.log('Tarball contents verified: ' + files.join(', '));
           "
-
-      # The token is expanded by npm at read time, so it never lands in a file.
-      - name: Authenticate to GitHub Packages
-        run: echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> ~/.npmrc
 
       # Registry target comes from publishConfig.registry in package.json.
       - name: Publish

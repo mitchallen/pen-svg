@@ -1,7 +1,11 @@
 node_modules/
 .DS_Store
-.npmrc
 *.tgz
+
+# .npmrc is deliberately tracked: it carries the @mitchallen scope mapping to
+# GitHub Packages, which CI and fresh clones need to resolve dependencies. It
+# must stay token-free -- auth belongs in ~/.npmrc or NODE_AUTH_TOKEN, never
+# in this file.
 
 # Generated test output. writeSVG rewrites these on every run and random-test
 # is non-deterministic, so tracking them produces churn. placeholder.txt is

@@ -18,18 +18,9 @@ pen to svg file
 
 ## Installation
 
-Requires __Node.js 18__ or higher.
-
 As of __0.3.0__ this package is published to __GitHub Packages__, not the public npm
 registry. Versions __0.2.7 and earlier__ remain on npmjs.org and are no longer updated
 there.
-
-> __Known limitation.__ npm maps registries per *scope*, not per package. Pointing
-> `@mitchallen` at GitHub Packages therefore redirects *every* `@mitchallen/*` lookup
-> there -- including this package's own dependencies __@mitchallen/demand__ and
-> __@mitchallen/fuse-svg-path__, and the __@mitchallen/pen__ peer dependency, which are
-> currently published only on npmjs.org. Until those are also on GitHub Packages, a
-> scoped install will fail to resolve them.
 
 Requires __Node.js 18__ or higher.
 
@@ -46,6 +37,11 @@ variable rather than committing it:
 Then:
 
     $ npm install @mitchallen/pen-svg
+
+That one scope mapping covers everything this package needs. Its dependencies
+__@mitchallen/demand__ and __@mitchallen/fuse-svg-path__, and the __@mitchallen/pen__
+peer dependency, are all published to GitHub Packages too -- which matters because npm
+maps registries per *scope*, not per package, so a mixed setup would not resolve.
 
 This package expects __@mitchallen/pen__ as a peer dependency, since you create the
 pens that you hand to `addPen`. Modern npm installs peer dependencies automatically;
@@ -190,6 +186,8 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 #### Version 0.3.0
 
 * now published to __GitHub Packages__ instead of npmjs.org (see Installation)
+* upgraded to __@mitchallen/demand__ 0.2.x, __@mitchallen/fuse-svg-path__ 0.2.x and
+  __@mitchallen/pen__ 0.3.x, all now on GitHub Packages -- no change to generated SVG
 * dependency modernization -- no changes to generated SVG output
 * removed unused __supertest__ and __@mitchallen/factory-base__ dependencies
 * moved __chance__ to devDependencies; __@mitchallen/pen__ is now a peer dependency
