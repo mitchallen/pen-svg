@@ -5,28 +5,42 @@ pen to svg file
 --
 
 <p align="left">
-  
-  <a href="https://npmjs.org/package/@mitchallen/pen-svg">
-    <img src="http://img.shields.io/npm/v/@mitchallen/pen-svg.svg?style=flat-square" alt="Version">
+
+  <a href="https://github.com/mitchallen/pen-svg/pkgs/npm/pen-svg">
+    <img src="https://img.shields.io/badge/GitHub%20Packages-0.3.0-blue" alt="Version">
   </a>
-  
-  <a href="https://npmjs.org/package/@mitchallen/pen-svg">
+
+  <a href="https://github.com/mitchallen/pen-svg/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
   </a>
-  
+
 </p>
 
 ## Installation
 
 Requires __Node.js 18__ or higher.
 
-    $ npm init
+As of __0.3.0__ this package is published to __GitHub Packages__, not the public npm
+registry. Point the `@mitchallen` scope at GitHub in an `.npmrc` next to your
+`package.json`:
+
+    @mitchallen:registry=https://npm.pkg.github.com
+
+GitHub Packages requires authentication even for public packages, so you also need a
+personal access token with the `read:packages` scope. Keep it in an environment
+variable rather than committing it:
+
+    //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+
+Then install as usual:
+
     $ npm install @mitchallen/pen-svg
 
-This package expects __[@mitchallen/pen](https://www.npmjs.com/package/@mitchallen/pen)__
-as a peer dependency, since you create the pens that you hand to `addPen`. Modern npm
-installs peer dependencies automatically; if you are managing them yourself, install it
-alongside:
+> Versions __0.2.7 and earlier__ remain on npmjs.org and are no longer updated there.
+
+This package expects __@mitchallen/pen__ as a peer dependency, since you create the
+pens that you hand to `addPen`. Modern npm installs peer dependencies automatically;
+if you are managing them yourself, install it alongside:
 
     $ npm install @mitchallen/pen
 
@@ -166,6 +180,7 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 #### Version 0.3.0
 
+* now published to __GitHub Packages__ instead of npmjs.org (see Installation)
 * dependency modernization -- no changes to generated SVG output
 * removed unused __supertest__ and __@mitchallen/factory-base__ dependencies
 * moved __chance__ to devDependencies; __@mitchallen/pen__ is now a peer dependency

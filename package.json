@@ -15,9 +15,16 @@
     "preversion": "npm test",
     "postversion": "git push && git push --tags"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mitchallen/pen-svg.git"
+    "url": "git+https://github.com/mitchallen/pen-svg.git"
+  },
+  "homepage": "https://github.com/mitchallen/pen-svg#readme",
+  "bugs": {
+    "url": "https://github.com/mitchallen/pen-svg/issues"
   },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
