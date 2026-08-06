@@ -248,3 +248,14 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * initial release
 
 * * *
+
+* * *
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+The license covers this project's own code. It does not apply to any third
+party assets that were imported into the project as a utility or for
+demonstration purposes; contact the authors of those assets for their
+licensing information.
