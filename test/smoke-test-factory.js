@@ -63,6 +63,37 @@ describe('module factory smoke test', () => {
         done();
     });
 
+    it('package method should return the package name', done => {
+        let obj = _factory.create({});
+        obj.package().should.eql("@mitchallen/pen-svg");
+        done();
+    });
+
+    it('getSVG with null options should return null', done => {
+        let obj = _factory.create({});
+        should.not.exist(obj.getSVG(null));
+        done();
+    });
+
+    it('getSVG should skip pens with an empty path', done => {
+        let obj = _factory.create({});
+        obj.addPen(penFactory.create({ color: 0xFF0000 }));
+        let svg = obj.getSVG({});
+        svg.should.not.containEql('<path');
+        done();
+    });
+
+    it('getSVG should ignore unknown transform keys', done => {
+        let obj = _factory.create({});
+        let pen = penFactory.create({ color: 0x00FF00 });
+        pen.up().goto({ x: 1, y: 2 }).down().goto({ x: 3, y: 4 });
+        obj.addPen(pen, { transform: { bogus: { x: 1 }, skewY: { angle: 5 } } });
+        let svg = obj.getSVG({});
+        svg.should.containEql('transform="skewY(5)"');
+        svg.should.not.containEql('bogus');
+        done();
+    });
+
     it('getSVG should return svg for a pen', done => {
         let obj = _factory.create({});
         should.exist(obj);
