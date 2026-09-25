@@ -32,14 +32,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@mitchallen"
+
+      # Authenticate to GitHub Packages without setup-node's registry-url/scope
+      # inputs, which write a scope mapping that breaks npm ci.
+      - run: echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> ~/.npmrc
 
       - run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm test
+
+      # Coverage gate: fails unless coverage is 100%. Run once, on the newest
+      # Node in the matrix (the coverage tooling needs a recent Node).
+      - if: matrix.node == '24'
+        run: npm run coverage
 
   consumer-smoke:
     name: Consumer install (engines floor, Node 18)
@@ -54,8 +61,10 @@ jobs:
         with:
           node-version: "24"
           cache: npm
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@mitchallen"
+
+      # Authenticate to GitHub Packages without setup-node's registry-url/scope
+      # inputs, which write a scope mapping that breaks npm ci.
+      - run: echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> ~/.npmrc
 
       - run: npm ci
         env:
@@ -69,8 +78,10 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "18"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@mitchallen"
+
+      # Authenticate to GitHub Packages without setup-node's registry-url/scope
+      # inputs, which write a scope mapping that breaks npm ci.
+      - run: echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> ~/.npmrc
 
       - name: Install and exercise the tarball
         working-directory: ${{ runner.temp }}
@@ -100,8 +111,10 @@ jobs:
         with:
           node-version: "24"
           cache: npm
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@mitchallen"
+
+      # Authenticate to GitHub Packages without setup-node's registry-url/scope
+      # inputs, which write a scope mapping that breaks npm ci.
+      - run: echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> ~/.npmrc
 
       - run: npm ci
         env:

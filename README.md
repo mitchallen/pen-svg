@@ -5,15 +5,18 @@ pen to svg file
 --
 
 <p align="left">
-
-  <a href="https://github.com/mitchallen/pen-svg/pkgs/npm/pen-svg">
-    <img src="https://img.shields.io/badge/GitHub%20Packages-0.3.0-blue" alt="Version">
+  <a href="https://github.com/mitchallen/pen-svg/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/mitchallen/pen-svg/ci.yml?branch=main" alt="CI">
   </a>
-
+  <a href="https://github.com/mitchallen/pen-svg/actions/workflows/ci.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Coverage: 100%">
+  </a>
+  <a href="https://github.com/mitchallen/pen-svg/pkgs/npm/pen-svg">
+    <img src="https://img.shields.io/github/package-json/v/mitchallen/pen-svg?label=GitHub%20Packages" alt="Version">
+  </a>
   <a href="https://github.com/mitchallen/pen-svg/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
   </a>
-
 </p>
 
 ## Installation

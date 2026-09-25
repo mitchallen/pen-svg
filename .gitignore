@@ -13,3 +13,4 @@ node_modules/
 # into -- without it the suite fails with ENOENT.
 **/test/output/*
 !**/test/output/placeholder.txt
+coverage/

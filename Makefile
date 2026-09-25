@@ -1,4 +1,4 @@
-.PHONY: help install test pack-check clean-all
+.PHONY: help install test pack-check clean-all coverage
 
 .DEFAULT_GOAL := help
 
@@ -10,6 +10,9 @@ install: ## Install dependencies
 
 test: ## Run tests
 	npm test
+
+coverage: ## Run tests with coverage (fails below 100%)
+	npm run coverage
 
 pack-check: ## Fail if the packed tarball would ship unexpected files
 	node scripts/check-pack.js
