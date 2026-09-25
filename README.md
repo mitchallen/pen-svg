@@ -10,7 +10,7 @@ pen to svg file
     <img src="https://img.shields.io/badge/GitHub%20Packages-0.3.0-blue" alt="Version">
   </a>
 
-  <a href="https://github.com/mitchallen/pen-svg/blob/master/LICENSE">
+  <a href="https://github.com/mitchallen/pen-svg/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
   </a>
 
