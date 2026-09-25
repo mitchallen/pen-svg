@@ -90,6 +90,10 @@ jobs:
         run: |
           mkdir -p consumer && cd consumer
           npm init -y > /dev/null
+          # Map @mitchallen to GitHub Packages the way a real consumer's project
+          # .npmrc does (see README); the runtime deps @mitchallen/demand and
+          # @mitchallen/fuse-svg-path only exist there, not on npmjs.
+          echo '@mitchallen:registry=https://npm.pkg.github.com' > .npmrc
           npm install "$RUNNER_TEMP"/mitchallen-pen-svg-*.tgz --omit=dev
           node -e "
             const svg = require('@mitchallen/pen-svg').create({}).getSVG({});
