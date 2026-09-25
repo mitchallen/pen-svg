@@ -1,3 +1,9 @@
+> **This repository is archived, and `@mitchallen/pen-svg` is frozen at 0.3.1.**
+> That version stays installable from GitHub Packages for existing users, but
+> there will be no further releases. The code continues as
+> `@mitchallen/pen-svg-v2`, an internal package of the
+> [drawing-kit](https://github.com/mitchallen/drawing-kit) monorepo
+> ([`packages/pen-svg`](https://github.com/mitchallen/drawing-kit/tree/main/packages/pen-svg)).
 
 @mitchallen/pen-svg
 ==
